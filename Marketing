@@ -1,0 +1,83 @@
+Algoritmo "semnome"
+// Disciplina   : [Linguagem e Lógica de Programação]
+// Professor   : Antonio Carlos Nicolodi
+// Descrição   : Aqui você descreve o que o programa faz! (função)
+// Autor(a)    : Nome do(a) aluno(a)
+// Data atual  : 27/11/2024
+Var
+   // Seção de Declarações das variáveis
+   Aumento, Queda: real
+   x, i:inteiro
+   Vendas: vetor [1..12] de real
+   Compartilhamentos: real
+   Publi:real
+   Preco, NovoPreco: real
+Inicio
+   // Seção de Comandos, procedimento, funções, operadores, etc...
+
+   escreval("olá faremos as contas e saberemos oque fazer em casos de lucro ou de prejuizo")
+   escreval("nos diga em uma escala de 1 a 100 qual foi a melhora de compartilhamentos")
+   escreval
+   escreval
+   leia (Compartilhamentos)
+   se (Compartilhamentos>42) entao
+      escreval("ótimo então tivemos um alcance bom")
+      escreval("sabendo disso podemos fazer uma previsão boa")
+      escreval
+      se (Compartilhamentos>68) então
+         Escreval ("com essas publicações podemos ter um aumento de vendas de até 26%")
+         escreval
+         escreval
+         escreval("podemos aumentar o preço de nossos veiculos em até 15%")
+         escreval
+         escreval("realizaremos uma simulação agora com o novo preço")
+         escreval
+         escreval("por favor digite um preço de carro")
+         escreval
+         escreval
+
+         Aumento<-(115/100)
+         leia(Preco)
+         NovoPreco<-(Aumento*Preco)
+         escreval("novo preço é ", NovoPreco,"")
+
+      senao
+         escreval("como foi um pouco menor do que a nossa visão positiva o aumento em vendas pode ser de até 13%")
+         escreval
+         escreval
+         escreval("podemos aumentar o preço de nossos veiculos em até 4%")
+         escreval
+         escreval("realizaremos uma simulação agora com o novo preço")
+         escreval
+         escreval("por favor digite um preço de carro")
+         escreval
+         escreval
+         escreval
+         leia(Preco)
+         Aumento<-(104/100)
+         NovoPreco<-(Aumento*Preco)
+         escreval("novo preço é ", NovoPreco,"")
+      fimse
+   senao
+      escreval("é uma pena, infelizmente com tão pouca movimentação do publico a queda em vendas será de 7,28%")
+      escreval
+      escreval
+      escreval("por causa da baixa publicidade do publico")
+      escreval
+      escreval("o preço dos nossos carros será 7% mais baixo")
+       escreval
+       escreval("realizaremos uma simulação agora com o novo preço")
+         escreval
+         escreval("por favor digite um preço de carro")
+         escreval
+         escreval
+         escreval
+         leia(Preco)
+         Queda<-(93/100)
+         NovoPreco<-(Queda*Preco)
+         escreval("novo preço é ", NovoPreco,"")
+   fimse
+
+
+
+Fimalgoritmo
