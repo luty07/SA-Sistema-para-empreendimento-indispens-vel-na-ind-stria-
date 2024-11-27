@@ -1,0 +1,161 @@
+
+Algoritmo "financeiro"
+tipo
+receita = registro
+vendas      : real
+impostos    : real
+manutencao  : real
+luz         : real
+agua        : real
+telefone    : real
+imprestimos : real
+dividas     : real
+outros      : real
+mes         : inteiro
+fimregistro
+Var
+// Seção de Declarações das variáveis
+ganhos : vetor[1..99,1..99] de receita
+desp : vetor[1..99,1..99] de receita
+final: vetor [1..12] de inteiro
+l,c ,r ,f  : inteiro
+esc         : inteiro
+fim : real
+
+funcao Rec() : real
+inicio
+limpatela
+para l de 1 ate 99
+     para c de 2 ate 99
+     final[l] <- ganhos[l,c].vendas + ganhos[l,c].imprestimos + ganhos[l,c].outros
+     final[l] <- final - desp[l,c].impostos - desp[l,c].luz
+     final[l] <- final - desp[l,c].agua - desp[l,c].telefone- desp[l,c].dividas
+     final[l] <- final - desp[l,c].outros - desp[l,c].manutencao
+     fim <- fim + final[l]
+     fimpara
+fimpara
+
+retorne fim
+fimfuncao
+
+procedimento Adc ()
+inicio
+se esc = 1 entao
+para l de 1 ate 12 faca
+     para c de 2 ate 11 faca
+     limpatela
+     escreval ("mês : ", ganhos.[l,1])
+     escreval ("digite as despesas dos impostos")
+     leia (desp[l,c].impostos)
+     escreval ("digite as despesas da manutencao")
+     leia (desp[l,c].manutencao)
+     escreval ("digite as despesas da conta da luz")
+     leia (desp[l,c].luz)
+     escreval ("digite as despesas da conta da água")
+     leia (desp[l,c].agua)
+     escreval ("digite as despesas de conta de telefone")
+     leia (desp[l,c].telefone)
+     escreval ("digite as despesas das dividas")
+     leia (desp[l,c].dividas)
+     escreval ("digite as despesas de outros")
+     leia (desp[l,c].outros)
+     escreval ("digite os ganhos de vendas")
+     leia (ganhos[l,c].vendas)
+     escreval ("digite os ganhos de imprestimos")
+     leia (ganhos[l,c].imprestimos)
+     escreval ("digite os ganhos de outros")
+     leia (ganhos[l,c].outros)
+     fimpara
+fimpara
+
+senao
+para l de 1 ate 12 faca
+     para c de 2 ate 11 faca
+     escreval ("mês : ", ganhos.[l,1])
+     escreval ("digite as despesas dos impostos")
+     leia (desp[l,c].impostos)
+     escreval ("digite as despesas da manutencao")
+     leia (desp[l,c].manutencao)
+     escreval ("digite as despesas da conta da luz")
+     leia (desp[l,c].luz)
+     escreval ("digite as despesas da conta da água")
+     leia (desp[l,c].agua)
+     escreval ("digite as despesas de conta de telefone")
+     leia (desp[l,c].telefone)
+     escreval ("digite as despesas das dividas")
+     leia (desp[l,c].dividas)
+     escreval ("digite as despesas de outros")
+     leia (desp[l,c].outros)
+     escreval ("digite os ganhos de vendas")
+     leia (ganhos[l,c].vendas)
+     escreval ("digite os ganhos de imprestimos")
+     leia (ganhos[l,c].imprestimos)
+     escreval ("digite os ganhos de outros")
+     leia (ganhos[l,c].outros)
+       fimpara
+fimpara
+fimse
+fimprocedimento
+
+Inicio
+// Seção de Comandos, procedimento, funções, operadores, etc...
+para l de 1 ate 12 faca
+     para c de 1 ate 1 faca
+     ganhos[l,c].mes   <- l
+     desp[l,c].mes <- l
+     fimpara
+fimpara
+
+
+repita
+escreval (" [1] adicionar valores de ganhos")
+escreval (" [2] adicionar valores de despesas")
+escreval (" [3] receita")
+escreval (" [4] Previsão de Receitas")
+escreval (" [5] listar")
+escreval (" [6] encerrar")
+leia (esc)
+escolha esc
+
+caso 1
+Adc ()
+
+caso 2
+Adc ()
+
+caso 3
+limpatela
+escreval (" a receita total é : R$" Rec() )
+leia (esc)
+
+caso 4
+limpatela
+escreval (" a previsão de receita por mês é : R$" Rec()/4 )
+leia (esc)
+
+caso 5
+
+para l de 1 ate 12
+     para c de 2 ate 12 faca
+     limpatela
+     escreval ("mês : ", ganhos.[l,1])
+     escreval ("despesas")
+     escreval ("impostos : R$", desp[l,c].impostos          )
+     escreval ("manutencao : R$ ", desp[l,c].manutencao      )
+     escreval ("luz : R$", desp[l,c].luz                    )
+     escreval ("agua : R$", desp[l,c].agua                  )
+     escreval ("telefone : R$", desp[l,c].telefone          )
+     escreval ("dividas : R$", desp[l,c].dividas            )
+     escreval ("outros : R$", desp[l,c].outros              )
+     escreval ("ganhos")
+     escreval ("vendas : R$", ganhos[l,c].vendas                )
+     escreval ("imprestimos : R$", ganhos[l,c].imprestimos      )
+     escreval ("outros : R$", ganhos[l,c].outros                )
+
+     leia(esc)
+     fimpara
+fimpara
+
+fimescolha
+ate esc = 6
+Fimalgoritmo
