@@ -1,0 +1,109 @@
+Algoritmo "RH"
+tipo
+   pagamento = registro
+      salario           : real
+      horasExtras       : real
+      DecimotTerceiro   : real
+      INSS              : real
+      Descontos         : real
+      nome              : caractere
+      qunHE             : inteiro
+   fimregistro
+Var
+   pagamentos : vetor[1..99] de pagamento
+   esc , i , a : inteiro
+   nome : caractere
+   ins , liquido: real
+   //
+procedimento AdicioValor()
+inicio
+   limpatela
+   i <- i + 1
+   Escreval ("  nome do funcionario ")
+   leia (pagamentos[i].nome)
+   escreval (" qual o valor do salario")
+   leia (pagamentos[i].salario)
+   escreval (" qual o valor da hora extra")
+   leia (pagamentos[i].horasExtras )
+   escreval (" qual o valor dos descontos")
+   leia (pagamentos[i].Descontos )
+   escreval (" quantas horas extras foram trabalhadas")
+   leia (pagamentos[i].qunHE  )
+fimprocedimento
+//
+procedimento realizarPagamento()
+inicio
+   limpatela
+   escreval ("digite o nome do funcionario")
+   leia (nome)
+   para i de 1 ate 99 faca
+      se nome = pagamentos[i].nome entao
+         a <- i
+      fimse
+   fimpara
+   escreval (" o valor do INSS é : R$ ",INSS() )
+   escreval (" o salario bruto é : R$ ",pagamentos[a].salario )
+   escreval (" o décimo terceiro é : R$ ",DecTEr())
+   escreval (" o valor liquido  é : R$ ",Liquido() )
+   leia (esc)
+fimprocedimento
+//
+
+funcao INSS() : real
+inicio
+   se (pagamentos[a].salario = 1412) ou (pagamentos[a].salario < 1412) entao
+      ins <- (pagamentos[a].salario) * 75/1000
+   fimse
+   se (pagamentos[a].salario > 1412) ou (pagamentos[a].salario < 2667) entao
+      ins <- (pagamentos[a].salario) * 9/100
+   fimse
+   se (pagamentos[a].salario > 2666) ou (pagamentos[a].salario < 4001) entao
+      ins <- (pagamentos[a].salario) * 12/100
+   fimse
+   se (pagamentos[a].salario > 4000) ou (pagamentos[a].salario < 7787) entao
+      ins <- (pagamentos[a].salario) * 14/100
+   fimse
+   se pagamentos[a].salario > 7786 entao
+      ins <- 7786 * 14/100
+   fimse
+   retorne ins
+fimfuncao
+//
+funcao DecTEr() : real
+inicio
+   pagamentos[a].DecimotTerceiro <- (pagamentos[a].salario/12) * 15
+   retorne  pagamentos[a].DecimotTerceiro
+fimfuncao
+//
+funcao Liquido() : real
+var
+   HE : real
+inicio
+   HE <- (pagamentos[i].horasExtras *  pagamentos[i].qunHE)
+   liquido <- pagamentos[a].salario + HE
+   liquido <- liquido - ins - pagamentos[i].Descontos
+
+   retorne liquido
+fimfuncao
+
+Inicio
+   // Seção de Comandos, procedimento, funções, operadores, etc...
+   repita
+      limpatela
+      escreval (" [1] realizar pagamento ")
+      escreval (" [2] adicionar valores ")
+      escreval (" [3] finalizar")
+      leia (esc)
+      escolha esc
+
+
+      caso 1
+         realizarPagamento()
+
+      caso 2
+         AdicioValor()
+
+      fimescolha
+   ate esc = 3
+Fimalgoritmo
+
