@@ -1,0 +1,107 @@
+Algoritmo "Manutenção de equipamentos"
+tipo
+   equipamento = registro
+      funca      : caractere
+      modelo        : caractere
+      proxMan     : inteiro
+   fimregistro
+
+   prestador = registro
+      telefone  : inteiro
+      gmail     : caractere
+      nome      : caractere
+      servico   : caractere
+   fimregistro
+
+Var
+   // Seção de Declarações das variáveis
+   prestadores : vetor [1..99] de prestador
+   maquuinas   : vetor [1..99] de equipamento
+   i ,a ,esc , dias : inteiro
+
+procedimento AdcMaq()
+inicio
+   i <- 1 + i
+   escreval ("insira o modelo")
+   leia   (maquuinas[i].modelo)
+   escreval ("insira função")
+   leia   (maquuinas[i].funca)
+   escreval ("insira a quantidade de dias para a próxima manutenção")
+   leia   (maquuinas[i].proxMan)
+   leia (esc)
+fimprocedimento
+
+procedimento AltMaq()
+inicio
+   escreval ("qual o modelo da máquina")
+   leia (esc)
+   para a de 1 ate 99 faca
+      se esc = maquuinas[a].modelo entao
+         escreval ("insira função")
+         leia   (maquuinas[a].funca)
+         escreval ("insira a quantidade de dias para a próxima manutenção")
+         leia   (maquuinas[a].proxMan)
+      fimse
+   fimpara
+
+fimprocedimento
+
+Inicio
+   // Seção de Comandos, procedimento, funções, operadores, etc...
+   repita
+      limpatela
+      escreval ("[1] gerenciar maquina")
+      escreval ("[2] gerenciar prestador de manuteção")
+      escreval ("[3] próximas manutençõs agendadas")
+      escreval ("[4] solicitar manutenção")
+      escreval ("[5] finalizar")
+      leia (esc)
+      escolha esc
+
+      caso 1
+         limpatela
+         escreval (" [1] adicionar maquina")
+         escreval (" [2] alterar valor de maquina")
+         leia (esc)
+         se esc = 1 entao
+            AdcMaq()
+         senao
+            AltMaq()
+         fimse
+
+      caso 2
+         limpatela
+         a <- a + 1
+         escreval (" qual o nome do prestador")
+         leia (prestadores[a].nome]
+         escreval (" qual o serviço do prestador")
+         leia (prestadores[a].servico]
+         escreval (" qual o telefone do prestador")
+         leia (prestadores[a].telefone]
+         escreval (" qual o email do prestador")
+         leia (prestadores[a].gmail]
+
+      caso 3
+         dias <- dias + 1
+         para i de 1 ate 99 faca
+            escreval ("maquina: ",maquuinas[i].nome,"data: ", maquuinas[i].proxMan - dias)
+         fimpara
+
+      caso 4
+         escreval ("qual o defeito da maquina ?")
+         leia (esc)
+         para a de 1 ate 99
+            se prestadores[a].servico = esc entao
+               escreval ("digite o modelo da maquina")
+               leia(esc)
+               escreval ("email enviado para ", prestadores[a].nome )
+            senao
+               escreval ("prestador de manutenção não encontrado")
+            fimse
+         fimpara
+         leia(esc)
+      fimescolha
+   ate esc = 5
+
+
+Fimalgoritmo
